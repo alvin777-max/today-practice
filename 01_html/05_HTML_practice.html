@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hayoun's Menu Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Brush+Script&display=swap"
+        rel="stylesheet">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        body {
+            font-family: "Nanum Brush Script", cursive;
+            font-weight: 400;
+            font-style: normal;
+            line-height: 1.0;
+        }
+
+        header
+        {
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+        ul{
+            display: flex;
+            justify-content: center; 
+            gap: 20px;
+            display: flex;
+            list-style: none;
+        }
+
+        li{
+            
+            color: white;
+            border:15px solid blue;
+            background-color: blue;
+            border-radius: 15px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+           
+        }
+        li:hover{
+            background-color: rgb(90, 247, 247);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(77, 241, 241, 0.589);
+            opacity: 0.9;
+        }
+        li:active
+        {
+            transform: translateY(-2px);
+         }
+        a:not(#github){
+            color: white;
+            #github{
+                color:blue;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+        #introduction{
+            background-color: rgb(225, 255, 255);
+            border-radius: 5%;
+            padding:1px;
+        }
+         #category{
+            background-color: rgb(225, 255, 255);
+            border-radius: 5%;
+            padding:1px;
+         }
+         #image{
+            background-color: rgb(225, 255, 255);
+            border-radius: 5%;
+            padding:1px;
+         }
+         #menu{
+            background-color: rgb(225, 255, 255);
+            border-radius: 5%;
+            padding:1px;
+         }
+         #menu-registration{
+            background-color: rgb(225, 255, 255);
+            border-radius: 5%;
+            padding:1px;
+         }
+
+        h2{
+            border-bottom:1px solid black;
+        }
+        figure{
+           
+           justify-content: center;
+           text-align: center;
+        }
+        img{
+            border-radius: 10px;
+        }
+        th{
+            background-color: gray;
+
+        }
+      #menu{
+         justify-content: center;
+                text-align: center;
+      }
+      #menu table{
+         width: 95%;
+         margin: 0 auto;
+         border: 2px solid skyblue;
+         border-collapse: collapse;
+      }
+      #menu caption{
+         text-align: center;
+      }
+      #menu th,
+      #menu td{
+         border: 1px solid skyblue;
+      }
+      #menu .available{
+         color: green;
+      }
+      #menu .sold-out{
+         color: red;
+      }
+        
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>Hayoun's Menu Manager</h1>
+        <p>메뉴를 등록하고, 조회하고, 관리할 수 있는 메뉴 관리 시스템입니다.</p>
+        <nav>
+            <ul>
+                <li><a href="#introduction">서비스 소개</a></li>
+                <li><a href="#category">카테고리</a></li>
+                <li><a href="#menu">메뉴 목록</a></li>
+                <li><a href="#menu-registration">메뉴 등록</a></li>
+            </ul>
+        </nav>
+        </div>
+
+    </header>
+
+    <hr>
+    <main>
+        <section id="introduction">
+            <h2 class="line-1" > 서비스 소개</h2>
+            <strong>Hayoun's Menu Manager</strong>은 음식점의 메뉴 정보를 관리하기 위한 페이지입니다.<br>
+            메뉴명, 가격, 카테고리, 판매 상태를 한눈에 파악할 수 있습니다. <br><br>
+            이번 HTML 과제에서는 <mark>화면의 구조</mark>를 만드는 것에 집중합니다.
+            디자인은 다음 CSS 과제에서 적용할 예정입니다.
+        </section>
+
+        <hr>
+        <section id="category">
+            <h2 class="line-2"> 카테고리 목록</h2>
+            <ul style="text-align: left;">
+                <li>한식</li>
+                <li>중식</li>
+                <li>일식</li>
+                <li>양식</li>
+                <li>디저트</li>
+                <li>음료</li>
+            </ul>
+        </section>
+
+        <hr>
+        <section id="image">
+            <h2 class="line-3"> 대표 메뉴</h2>
+            <figure>
+                <img src="sample/image/sushi.PNG" alt="맛있는 초밥사진">
+                <figcaption>오늘의 대표 메뉴 이미지입니다.</figcaption>
+            </figure>
+        </section>
+
+        <hr>
+
+        <section id="menu">
+            <h2 class="line-4">메뉴 목록</h2>
+            <table>
+                <caption>등록된 메뉴 목록</caption>
+                <thead>
+                    <tr id="menu list">
+                        <th>메뉴 번호</th>
+                        <th>메뉴명</th>
+                        <th>가격</th>
+                        <th>카테고리</th>
+                        <th>판매 상태</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>한우딸기국밥</td>
+                        <td>15000원</td>
+                        <td>한식</td>
+                        <td class="available">판매중</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>참치맛아이스크림</td>
+                        <td>8000원</td>
+                        <td>디저트</td>
+                        <td class="available">판매중</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>바닐라김치라떼</td>
+                        <td>6500원</td>
+                        <td>음료</td>
+                        <td class="sold-out">품절</td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>매운초코파스타</td>
+                        <td>12000원</td>
+                        <td>양식</td>
+                        <td class="available">판매중</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>마라민트탕수육</td>
+                        <td>18000원</td>
+                        <td>중식</td>
+                        <td class="available">판매중</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="5">총 5개의 메뉴가 등록되어 있습니다.</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+        <section id="menu-registration">
+            <h2 class="line-5">메뉴 등록</h2>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend id="guestbo">신규 메뉴 정보</legend>
+                    <div><label for="user-id">메뉴명:</label>
+                        <input id="user-id" name="userId" type="text" placeholder="메뉴명을 입력하세요" required>
+                    </div>
+                    <div><label for="user-pw">가격:</label>
+                        <input id="user-pw" name="userPassword" type="number" placeholder="가격을 입력하세요" required>
+                    </div>
+                    <div><label for="user-track">카테고리:</label>
+                        <select name="track" id="user-track">
+                            <option value="">카테고리 선택</option>
+                            <option value="frontend">한식</option>
+                            <option value="backend">중식</option>
+                            <option value="ai">일식</option>
+                            <option value="ai">양식</option>
+                            <option value="ai">디저트</option>
+                            <option value="ai">음료</option>
+                    </div>
+                    </select>
+                    <br>
+
+                    <div><label for="route">판매 상태:</label>
+                        <input type="radio" id="route-internet" name="route" value="internet" checked>
+                        <label for="route-internet">판매중</label>
+                        <input type="radio" id="route-friend" name="route" value="friend">
+                        <label for="route-friend">품절</label>
+                    </div>
+
+
+                    <div><label for="memo">메뉴 설명:</label> </div>
+
+                    <div><textarea name="memo" id="memo" rows="5" placeholder="메뉴 설명을 입력하세요"></textarea>
+                    </div>
+                    <span><button type="submit">메뉴 등록</button></span>
+                    <span> <button type="reset">다시 작성</button></span>
+                </fieldset>
+            </form>
+        </section>
+
+
+        <hr>
+        <h2>관련 링크</h2>
+        <p>프로젝트 코드는 <a id = "github" href="https://www.github.com">GitHub</a>에서 확인할 수 있습니다.</p>
+
+        <hr>
+    </main>
+    <footer>
+        <p> 작성자:김하윤 </p>
+        <p>풀스택 개발자 과정 HTML 과제</p>
+        <p>작성일:2026-00-00</p>
+    </footer>
+
+
+
+
+
+
+</body>
+
+</html>
