@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 객체와 this</title>
+</head>
+
+<body>
+    <h1>이벤트 객체와 핸들러 내부의 this</h1>
+
+    <hr>
+
+    <h3>1. 이벤트 객체: 상세한 '사건 보고서'</h3>
+    <pre>
+    이벤트가 발생하면, 브라우저는 해당 이벤트의 모든 정보가 담긴 '이벤트 객체'를 생성합니다.
+    이 객체는 이벤트 핸들러(우리가 등록한 함수)의 <b>첫 번째 인자</b>로 자동으로 전달됩니다.
+    </pre>
+
+    <h2 id="msg">여기를 클릭하면, 클릭한 곳의 마우스 좌표를 알려드립니다.</h2>
+
+    <script>
+        const $msg = document.getElementById('msg');
+        document.addEventListener('click', function (e) {        //e->event 객체를 받아주는 매개변수
+            // console.log(e);
+            $msg.textContent = `마우스 좌표 -> X:${e.clientX}, Y: ${e.clientY}`;
+
+            //console.log('실제 클릭 대상(e.target):', e.target);     //event target은 가장 깊은 요소를 알려줌(실제 클릭한 대상을 가리킴)
+
+        });             
+    </script>
+
+    <hr>
+
+    <h3>2. 핸들러 내부의 `this`: '사건 당사자'는 누구인가?</h3>
+    <pre>
+    `this`는 '누가 이 함수를 호출했는가'에 따라 가리키는 대상이 달라져서 혼란을 줄 수 있습니다.
+    특히 화살표 함수를 쓸 때 주의해야 합니다.
+    </pre>
+
+    <button id="btn">클릭해보세요</button>
+
+    <script>
+        const $btn = document.getElementById('btn');
+
+        //가장 정확하게 가져오는 방법: e.currentTarget 이용하기
+        // 일반 funcion 함수 사용 시
+        $btn.addEventListener('click', function (e) {
+            console.log('----일반 function----');
+            console.log('this:', this);     // 이벤트 핸들러가 등록된 요소를 가리킴
+            console.log('e.currentTarget:', e.currentTarget);   // 실행중인 이벤트 핸들러가 등록되어있는 요소를 가리킴
+            console.log(this === e.currentTarget);
+
+            this.style.backgroundColor = 'green';
+        });
+
+        // 화살표 함수 사용 시
+        $btn.addEventListener('mouseover', (e) => {
+            console.log('----화살표 함수');
+            console.log('this:', this);         // window -> 화살표함수는 자신만의 this를 가지지 않음-바깥 스코프의 this를 가리킴
+            console.log(e.currentTarget);       // <button id="btn">클릭해보세요</button> 이벤트 핸들러가 등록된 요소
+        })
+    </script>
+
+    <hr>
+
+    <h3>3. 결론: `this` 대신 `e.currentTarget`을 사용하자!</h3>
+    <pre>
+    `function`과 화살표 함수 사이에서 `this`가 다르게 동작하여 생기는 혼란을 피하기 위해,
+    현대적인 자바스크립트 개발에서는 일관성을 유지하는 것이 중요합니다.
+
+    <b>e.currentTarget</b>은 어떤 종류의 함수를 쓰든, <b>항상 이벤트를 부착한 바로 그 요소</b>를 가리킵니다.
+    따라서 `this` 대신 `e.currentTarget`을 사용하는 것이 버그를 줄이는 가장 좋은 습관입니다.
+    </pre>
+
+    <button id="best-practice-btn">Best Practice</button>
+    <script>
+        const $bestBtn = document.getElementById('best-practice-btn');
+
+        $bestBtn.addEventListener('click', (e) => {
+            const btn = e.currentTarget;        // 이벤트 처리가 끝나면 e.currentTarget가 대상을 더이상 가리키고 있지 않을 수도 있음->변수에 저장하는것이 안전
+
+            btn.textContent = '클릭되었습니다!'
+            btn.style.backgroundColor = 'skyblue';
+
+            //  setTimeout(실행할함수, 대기시간);
+            setTimeout(() => {
+                btn.textContent = 'Best Practice';      // 바깥선언인 btn사용 가능
+                btn.style.backgroundColor = '';
+            }, 2000);
+        });
+
+        //e.target = 이벤트가 시작된 요소
+        //e.currenttarget = 이벤트가 등록된 요소
+        // html은 부모와 자식관계- 그 요소에만 머무르지 않고 dom트리를 통해 전달이 됨. 이 둘의 값이 달라질 수 있음
+        //-> 이벤트 전파
+    </script>
+
+</body>
+
+</html>

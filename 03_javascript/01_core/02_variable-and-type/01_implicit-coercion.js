@@ -8,7 +8,7 @@
 console.log('문자열 타입으로 변환');
 console.log(10 +'20'); // +는 문자열이 끼어 있으면 연결 연산자로 동작
 console.log(typeof (10 + '20'));
-console.log(true + '');  // 'ture'
+console.log(true + '');  // 'true'
 console.log(null + '');  // 'null'
 
 //문자열로 변경 필요 시 빈 문자열을 사용하는 방법도 있다.

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 전파와 위임</title>
+    <style>
+        ul { background: lightgray; padding: 20px; }
+        li { background: lightblue; margin: 10px; }
+        .highlight { font-weight: bolder; text-decoration: underline; color: crimson; }
+    </style>
+</head>
+<body>
+<h1>이벤트 전파(Propagation)와 위임(Delegation)</h1>
+
+<hr>
+
+<h3>1. 이벤트 버블링: 연못의 파문처럼!</h3>
+<pre>
+    하위 요소에서 발생한 이벤트는, 그 파문이 부모 요소를 따라 최상위까지 올라가는 '버블링' 현상을 일으킵니다.
+    따라서 부모 요소에 달아둔 이벤트 리스너는, 자식 요소에서 발생한 이벤트에도 '반응'할 수 있습니다.
+    </pre>
+
+<ul id="parent"> 부모 (ul)
+    <li id="child"> 자식 (li) </li>
+</ul>
+
+<script>
+    const $parent = document.getElementById('parent');
+    const $child = document.getElementById('child');
+
+    $parent.addEventListener('click', (e) => {
+        alert('부모(ul)가 클릭을 감지했습니다.');
+        console.log('----부모 핸들러 ----');
+        console.log('e.target:', e.target);  // 이벤트가 실제로 시작된 요소 - 연못에 처음 돌을 던진 곳/무엇을 클릭했는가
+
+        //이벤트 핸들러가 등록된 요소
+        console.log('e.currentTarget', e.currentTarget);    // 던진 돌이 일으킨 파원을 감지한곳/그래서 어디에 등록되어있니?
+    });
+
+    $child.addEventListener('click', () => {        //자식을 클릭해도 자식&부모 둘에서 감지
+        alert('자식(li)이 클릭되었습니다!');
+    })
+    // ----------- 이벤트 전파 ---------------
+    //1. 캡처링- window에서 이벤트 발생 요소 방향으로 내려감
+    //2. 타깃 단계 - 실제 이벤트 대상에 도착
+    //3. 버블링 단계 - 실제 이벤트 대상에서 부모 방향으로 올라감
+</script>
+
+<hr>
+
+<h3>2. 이벤트 위임: 똑똑하게 일 처리하기</h3>
+<pre>
+    이벤트 버블링을 활용하면, 여러 자식 요소에 각각 이벤트를 달 필요 없이,
+    부모 요소에 이벤트 핸들러를 단 하나만 등록하여 모든 자식의 이벤트를 처리할 수 있습니다.
+    이것을 '이벤트 위임'이라고 하며, 코드가 훨씬 효율적이고 유연해집니다.
+    </pre>
+
+<ul id="drink-list">
+    <li><strong>커피</strong></li>
+    <li>콜라</li>
+    <li>우유</li>
+</ul>
+<button id="add-btn">음료 추가</button>
+
+<script>
+    // 이벤트 위임 적용!
+    // 한명의 관리자가 여러일 하게 만듬
+    /**const $items = document.querySelectorAll('#drink -list li'); //선택자로 하위 객체들 선택
+    console.log($items);
+    $items.forEach(($item) => {                         // 배열은 아니지만 nodelist는 foreach 가능
+        $item.addEventListener('click', () => {             // foreach로 하나씩 걸어줌
+            $item.classList.toggle('highlight');
+        });
+    });    */                                            
+
+    const $drinkList = document.getElementById('drink-list');
+    const $addBtn = document.getElementById('add-btn');
+
+    function highlight(element) {
+        element.classList.toggle('highlight');     //highlight가 있으면 제거, 없으면 추가
+    }
+    // 이벤트 위임 활용
+    // 각 li가 아닌, 부모 ul에 이벤트 핸들러를 딱 한 번 등록
+    $drinkList.addEventListener('click', (e) => {
+
+        //  closest : 가장 가까운 전달된 요소(li)를 찾는다.
+        const $item = e.target.closest('li');   // 찾지 못하면 null 반환
+
+        if(!$item) return;      //li를 찾지 못했을 경우 item이 null이라면 return- ealry return
+        if(!$drinkList.contains($item)) return; // li가 여기에 포함되어있지 않으면 ealry return
+
+        highlight($item);       // 있다면 highlight 적용
+
+        console.log('클릭된 요소:', e.target);
+
+        // 내가 원하는 li를 클릭했을 때만 적용하기 위한 안전장치
+        if (e.target.matches('li')) {
+        highlight(e.target)
+        };
+    });
+
+    // 나중에 동적으로 추가되는 자식요소에도 이벤트 핸들러가 자동으로 동작한다
+    $addBtn.addEventListener('click', () => {
+        const $newLi = document.createElement('li');
+        $newLi.textContent = '사이다';
+
+        $drinkList.appendChild($newLi);
+    });
+
+
+</script>
+</body>
+</html>

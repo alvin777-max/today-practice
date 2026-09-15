@@ -7,7 +7,7 @@
  *키워드 변수명;
  *
  * 키워드: 변수를 어떤 규칙으로 만들지 정함
- * 변수명: 값을 다시 사용할 떄 부를 변수 이름
+ * 변수명: 값을 다시 사용할 때 부를 변수 이름
  */
 
  // var: ESS까지 사용했던 유일한 키워드(지금은 잘 사용하지 않음)
@@ -25,9 +25,11 @@
  greeting = "welcome!";
  console.log(greeting)
 
- // const: 재할당 금지. 선언과 동시에 값 할당 필요(const를 주로 사용하다가 필요할때 let 사용)
+ // const: 재할당 금지
+ // 반드시 선언과 동시에 초기화 해야 한다.(const를 주로 사용하다가 필요할때 let 사용 추천!)
+ // const num; -불가능
  const num = 1;
-//  num = 2;
+//  num = 2; 재할당 불가능
  console.log(num)
 
 // 변수명 규칙
@@ -38,6 +40,8 @@
  *  -변수명에 의미 붙이기 중요!
  */
 // const 1age = 1; // 숫자로 시작하는 변수는 선언이 안됨.
+const age1 = 1;
+const a1ge = 1;
 // const if = true; // 예약어 사용 금지
  const userName = "panda" // 두번쨰 단어부터 첫 글자를 대문자로 쓰는 camelCase가 일반적
  const userAge = 5;
