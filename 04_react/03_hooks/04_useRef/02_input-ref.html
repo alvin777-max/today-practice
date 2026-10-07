@@ -30,7 +30,7 @@
             *   렌더링이 끝나기 전에는 실제 DOM요소가 아직 준비되지 않았을 수 있으므로,
             *   DOM을 직접 다루는 코드는 useEffect안에서 처리하는것이 자연스럽다.
             */
-
+            // usernameRef.current로 Dom요소에 연결된 요소 취득
             useEffect(() => {
                 console.log('Login컴포넌트가 마운트 되었습니다.');
                 console.log(usernameRef.current);

@@ -21,6 +21,7 @@
 
                     if(result > 30) {
                         const e = new Error('숫자가 너무 큽니다.');
+                        // 에러와 함께 실패 처리 -> .catch 매개변수로 전달
                         return reject(e);
                     }
                     // 계산된 결과와 함께 성공처리 -> .then 매개변수로 전달 된다
@@ -33,6 +34,7 @@
 
         console.log('작업 시작');
 
+        // then-> increas(0)의 작업이 끝나고 나서 값을 받아서 쓰겠습니다.
         increase(0)
             .then((number) => {
                 console.log(number);
