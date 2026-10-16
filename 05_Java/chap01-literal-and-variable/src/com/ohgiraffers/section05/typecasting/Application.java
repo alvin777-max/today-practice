@@ -10,6 +10,7 @@ public class Application {
         * */
 
         /* 표현 범위가 더 넓은 숫자 자료형으로는 자동 형변환 */
+        // byte (1B) -> short (2B) -> int (4B) -> long (8B) -> float (4B) -> double (8B) 오른쪽으로 이동: 자동형변환
         byte bnum = 1;
         short snum = bnum;
         int inum = snum;
