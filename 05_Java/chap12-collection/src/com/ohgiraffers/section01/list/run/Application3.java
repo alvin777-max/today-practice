@@ -18,7 +18,7 @@ public class Application3 {
 
         List<String> linkedList = new LinkedList<>();
 
-        // 순서가 있고(인덱스 존재), 중복 허용, 배열길이 고정 미필요.
+        // 순서가 있고(인덱스 존재), 중복 허용, 배열길이 고정 불필요.
         // ArrayList와는 내부의 보관 구조가 다름
         // ArrayList에서 사용한 메서드와 동일함
         linkedList.add("apple");

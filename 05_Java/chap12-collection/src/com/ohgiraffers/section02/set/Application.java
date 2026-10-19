@@ -24,6 +24,18 @@ public class Application {
         alist.add("java");
 
         Set<String> hset = new HashSet<>();
+
+        // HashSet은 요소의 hashCode()와 equals()를 이용해 중복을 판단한다.
+
+    // hashCode() : 요소의 해시코드를 계산해 저장 위치 탐색에 활용한다.
+    // equals()   : 요소끼리 동등한지 비교한다.
+
+    // String 클래스는 두 메서드를 이미 오버라이딩했기 때문에
+    // 문자열 내용이 같으면 HashSet에서 중복으로 판단한다.
+
+    // 직접 만든 클래스는 필요에 따라
+    // equals()와 hashCode()를 함께 오버라이딩해야 한다.
+
         // equals()가 이미 구현되어있음 - 같은 값이면 중복 허용하지 않고 값을 넣음
         // hashCode()가 객체의 해시코드를 계산해서 저장위치 찾음.
         // hashcode가 먼저 찾고, equals가 확인 - String class에서는 이미 오버라이딩해서 만들어놨음.

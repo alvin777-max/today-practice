@@ -9,7 +9,7 @@ public class Application5 {
         /*
         * [Queue]
         * - 선입선출(FIFO)방식의 자료구조이다.
-        * - Queue는 */
+        * - Queue는 인터페이스이므로 실제 객체는 구현 클래스인 ArrayDeque로 생성한다.*/
 
         Queue<String> queue = new ArrayDeque<>();
 

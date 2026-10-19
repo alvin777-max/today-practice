@@ -1,0 +1,27 @@
+package com.ohgiraffers.section03;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class SubClass extends  SuperClass{
+
+    // 선언하지 않는것 허용
+//    @Override
+//    public void method() {
+//    }
+
+    // 같은 범위 허용
+//    @Override
+//    public void method() throws IOException {}
+
+    // 부모보다 더 구체적인 범위는 허용
+//    @Override
+    public void method() throws FileNotFoundException {}    // 부모가 허용한 범위 안에 있는 더 구체적인 Exception
+
+    //  부모보다 더 넓은 범위는 허용되지 않는다
+//    public void method() throws Exception {}
+
+
+
+}

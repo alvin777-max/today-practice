@@ -20,9 +20,9 @@ public class Application {
 
 
         List alist = new ArrayList();   // ArrayList의 상위타입인 List타입으로 참조변수 선언 - 다형성 활용
-        // 자료구조가 선언되지 않았기에 여러가지 자료형을 담을 수 있음
-        alist.add("apple");    // add 메서드를 사용해서 데이터를 추가
-        alist.add(123);
+        // 자료구조(제네릭)가 아직 선언되지 않았기에 여러가지 자료형을 담을 수 있음
+         alist.add("apple");    // add 메서드를 사용해서 데이터를 추가
+        System.out.println(alist.add(123));     // add() -> boolean 값 반환
         alist.add(45.67);
         alist.add((false));
 
@@ -46,6 +46,7 @@ public class Application {
         stringList.add("mango");
         stringList.add("mango");
 
+
         System.out.println(stringList); // [apple, banana, orange, mango, mango]
 
         /* get(인덱스): 해당 위치의 값 조회 */
@@ -67,7 +68,7 @@ public class Application {
         /*
         * [Collections 클래스]
         * 컬렉션을 다루는데 유용한 static 메소드들을 제공하는 유틸리티 클래스 - import 필요
-        * Collection 인터페이스와는 다르다
+        * Collection 인터페이스와는 다르다!!
         * */
 
         // 오림차순 정렬

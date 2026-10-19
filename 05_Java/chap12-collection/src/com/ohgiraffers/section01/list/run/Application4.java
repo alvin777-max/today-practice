@@ -15,7 +15,7 @@ public class Application4 {
         *
         * 자바에 오래된 Stack 클래스도 있지만, 현재는 Deque 인터페이스의 구현체인
         * ArrayDeque를 스택처럼 사용하는 방식이 일반적이다.
-        * Deque는 양쪽 끝에서 값을 넣고 뺼 수 있자만 여기서는 한쪽 끝만 사용한다. */
+        * Deque는 양쪽 끝에서 값을 넣고 뺼 수 있지만 여기서는 한쪽 끝만 사용한다. */
 
         Deque<Integer> integerstack = new ArrayDeque<>();   // 상위 인터페이스인 Deque로 다형성 적용
 
