@@ -11,15 +11,15 @@ public class Application {
          * 그 호출을 클래스이름::정적메소드이름 형태로 간결하게 표현하는 문법이다.
          * */
 
-        Function<String, Integer> parseInt = value -> Integer.parseInt(value);
+        Function<String, Integer> parseInt = value -> Integer.parseInt(value);  // apply가 실행되야 호출됨
 
         parseInt.apply("123");
         System.out.println(parseInt.apply("123"));
 
         // 클래스이름::정적메소드이름
-        Function<String, Integer> parseIntReference = Integer::parseInt;
+        Function<String, Integer> parseIntReference = Integer::parseInt;    // apply가 실행되야 호출됨
 
-        System.out.println(parseIntReference.apply("123")); // apply로 받은 값이 Integer::parseInt의 매개변수로 전달되고 반환됨
+        System.out.println(parseIntReference.apply("123")); // apply로 받은 값이 Integer::parseInt의 매개변수로 전달되고 반환됨 - apply
 
         Consumer<String> printer = message -> System.out.println(message);  // 이미 존재하는 인스턴스 메서드에 전달됨
 

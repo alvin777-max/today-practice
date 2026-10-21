@@ -1,0 +1,16 @@
+SELECT
+	EMP_ID,
+    EMP_NAME,
+    PHONE,
+    HIRE_DATE,
+    ENT_YN
+FROM
+	employee
+WHERE
+	PHONE LIKE '%2'
+    AND ENT_YN = 'N'
+   
+ORDER BY
+	HIRE_DATE DESC
+LIMIT 3;
+	

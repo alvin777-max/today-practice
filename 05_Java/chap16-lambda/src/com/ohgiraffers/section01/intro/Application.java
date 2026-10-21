@@ -27,6 +27,7 @@ public class Application {
         System.out.println("익명 클래스 덧셈 :" + calculate(10, 19, anonymousAdd));
 
         Calculator lambdaAdd = ( a, b) -> a + b;    // 컴파일러가 calculator가 인터페이스이고 추상 메서드가 하나인걸 앎. -> 오른쪽의 수행동작을 한다는것을 앎
+        System.out.println("람다: " + lambdaAdd.operate(10,19));
         System.out.println("람다식 덧셈 : " + calculate(10, 19, lambdaAdd));
 
         calculate(10,19, (a,b) -> a - b);   // 람다식 자체를 전달
