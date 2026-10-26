@@ -1,6 +1,9 @@
 # SET OPERATORS (집합 연산자)
 
 -- UNION: 두 결과를 합치기(중복은 제거)
+-- UNION ALL: 두 결과를 합치기(중복 포함)
+-- INTERSECT: 교집합 구하기
+-- EXCEPT : 차집합 구하기
 
 -- 카테고리 코드가 10번인 메뉴들
 -- 가격이 9,000원 미만인 메뉴들
@@ -26,6 +29,7 @@ WHERE
 -- 조회해오는 컬럼수가 같아야함 -- select문의 컬럼 개수가 같아야함
 
 -- UNION ALL : 두 결과를 합치기(중복 포함)
+
 
 SELECT
 	menu_name,
@@ -60,6 +64,18 @@ WHERE category_code = 10
 						tbl_menu
 					  WHERE
 						menu_price < 9000);
+                        
+SELECT menu_name, menu_price, category_code
+FROM tbl_menu
+WHERE category_code = 10
+
+INTERSECT
+
+SELECT menu_name, menu_price, category_code
+FROM tbl_menu
+WHERE menu_price < 9000;
+                        
+
 
 
 

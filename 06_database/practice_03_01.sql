@@ -1,0 +1,12 @@
+SELECT
+	MAX(a)
+FROM
+	(SELECT
+	SUM(SALARY) a
+FROM 
+	employee
+GROUP BY
+	DEPT_CODE) t;
+	
+
+	

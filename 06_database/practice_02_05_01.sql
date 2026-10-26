@@ -1,0 +1,13 @@
+SELECT
+	COUNT(MANAGER_ID) AS `COUNT(*)`
+FROM
+	employee;
+    
+----------
+SELECT
+	COUNT(*)
+FROM
+	employee
+WHERE
+	MANAGER_ID IS NOT NULL;
+
